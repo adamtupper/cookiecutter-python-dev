@@ -6,7 +6,7 @@ help:			## Show this help dialog.
 format:			## Run pre-commit hooks.
 	pre-commit run
 
-install-dev:		## Install the package in editable (dev) mode.
+install:		## Install the package in editable (dev) mode.
 	pip3 install -e .[dev]
 
 test:			## Run the tests.

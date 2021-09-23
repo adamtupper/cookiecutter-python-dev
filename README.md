@@ -46,7 +46,7 @@ make help
 Each time the package's dependencies are modified in `setup.cfg`, the package should be reinstalled via:
 
 ```shell
-make install-dev
+make install
 ```
 
 ## Notes
