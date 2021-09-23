@@ -1,0 +1,8 @@
+{
+    "build": { "dockerfile": "Dockerfile" },
+    "containerUser": "docker",
+    "workspaceFolder": "/home/docker/workspace",
+    "workspaceMount": "source=remote-workspace,target=/home/docker/workspace,type=volume",
+    "runArgs": ["--gpus=all", "--ipc=host"],
+    "postCreateCommand": "cd /home/docker/workspace && git clone git@github.com:{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}.git && cd {{cookiecutter.repo_name}} && pip3 install -e .[dev] && pre-commit install"
+}
