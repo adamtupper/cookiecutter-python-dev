@@ -10,7 +10,7 @@ install-dev:		## Install the package in editable (dev) mode.
 	pip3 install -e .[dev]
 
 test:			## Run the tests.
-	pytest tests/
+	pytest -v tests/
 
 build:			## Build the package.
 	python3 -m pip install --upgrade build
