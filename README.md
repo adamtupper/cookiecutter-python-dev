@@ -37,10 +37,23 @@ Python packages based on this template are designed to enable containerized deve
 
 To develop inside the container, run the **Remote-Containers: Reopen in Container** command after opening the project in VS Code (you may need to install the extension first).
 
+The Makefile contains a number of targets for running tests, formatting, and building the package etc. The full list and description of each target can be found by running:
+
+```shell
+make help
+```
+
+Each time the package's dependencies are modified in `setup.cfg`, the package should be reinstalled via:
+
+```shell
+make install-dev
+```
+
 ## Notes
 
 - The package is initialised with an MIT license. If you would like to use a different license, update `LICENSE` and `setup.cfg` after running the template.
 - The structure of the package follows the [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/) tutorial.
+- Packages are initialised with [pre-commit](https://pre-commit.com) and [pytest](https://pytest.org) as development/test requirements for formatting and unit testing, respectively.
 
 ## Contributing
 
