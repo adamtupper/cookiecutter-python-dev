@@ -3,19 +3,25 @@
 help:			## Show this help dialog.
 	@sed -ne '/@sed/!s/## //p' $(MAKEFILE_LIST)
 
-format:			## Run pre-commit hooks.
-	pre-commit run
+format:	env		## Run pre-commit hooks.
+	. env/bin/activate && pre-commit run
 
 install:		## Install the package in editable (dev) mode.
-	pip3 install -e .[dev]
+	. env/bin/activate && pip install -e .[dev]
 
 test:			## Run the tests.
-	pytest -v --cov tests/
+	. env/bin/activate && pytest -v --cov tests/
 
 build:			## Build the package.
-	python3 -m pip install --upgrade build
-	python3 -m build
+	( \
+		. env/bin/activate; \
+		python -m pip install --upgrade build; \
+		python -m build; \
+	)
 
 upload:			## Upload the package to PyPI.
-	python3 -m pip install --upgrade twine
-	python3 -m twine upload --repository pypi dist/*
+	( \
+		. env/bin/activate; \
+		python -m pip install --upgrade twine; \
+		python -m twine upload --repository pypi dist/*; \
+	)
