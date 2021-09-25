@@ -3,7 +3,7 @@
 help:			## Show this help dialog.
 	@sed -ne '/@sed/!s/## //p' $(MAKEFILE_LIST)
 
-format:	env		## Run pre-commit hooks.
+format:			## Run pre-commit hooks.
 	. env/bin/activate && pre-commit run
 
 install:		## Install the package in editable (dev) mode.
