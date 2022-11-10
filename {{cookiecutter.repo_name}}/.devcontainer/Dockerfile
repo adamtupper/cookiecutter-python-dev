@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-cudnn8-runtime-ubuntu18.04
+FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
 
 ENV PATH="${PATH}:/home/docker/.local/bin"
 
@@ -15,9 +15,14 @@ USER docker
 # Create workspace directory
 RUN mkdir -p /home/docker/workspace/
 
-# Install Git, Python, and Pip
+# Install Software Properties Common
 RUN sudo apt-get update && \
-    sudo apt-get install -y git python3 python3-pip python3.7
+    sudo apt-get install -y software-properties-common
+
+# Install Git, Python, and Pip
+RUN sudo add-apt-repository ppa:deadsnakes/ppa && \
+    sudo apt-get update && \
+    sudo apt-get install -y git python3.10 python3.10-dev python3.10-distutils python3-pip 
 
 # Install virtualenv
 RUN pip3 install virtualenv
